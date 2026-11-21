@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3: Review & Submit | Uganda National IT Skills Assessment 2026</title>
+    <link rel="stylesheet" href="survey.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <img src="/images/logo.jpg" alt="Uganda Coat of Arms" style="max-width:80px;">
+            <h1>National Information Technology Authority — Uganda</h1>
+        </div>
+    </header>
+
+    <section class="survey-banner">
+        <img src="/images/survey.jpg" alt="Uganda National IT Skills Assessment 2026 Banner" class="banner-image">
+        <div class="banner-overlay">
+            <h2>Uganda National IT Skills Assessment 2026</h2>
+        </div>
+    </section>
+
+    <nav class="progress-container" aria-label="Survey Progress">
+        <ol class="progress-steps">
+            <li class="step"><a href="index.html">Step 1 — Respondent Details</a></li>
+            <li class="step"><a href="step2.html" id="nav-step2">Step 2 — Skills Assessment</a></li>
+            <li class="step active">Step 3 — Submit</li>
+        </ol>
+    </nav>
+
+    <main class="survey-main">
+        <div class="survey-form">
+            <fieldset class="respondent-fieldset">
+                <legend>Review & Submit Assessment</legend>
+
+                <p class="review-intro">Please verify your details below before submitting your response to NITA-U.</p>
+
+                <table class="summary-table">
+                    <tbody id="summary-body"></tbody>
+                </table>
+
+                <div id="submission-status" class="status-box" hidden>
+                    Thank you! Your Uganda National IT Skills Assessment 2026 response has been recorded.
+                </div>
+
+                <div class="form-actions split-actions" id="review-actions">
+                    <a href="step2.html" id="btn-back-step2" class="btn-back">Back to Step 2</a>
+                    <button type="button" id="btn-submit-final" class="btn-next">Submit Assessment</button>
+                </div>
+            </fieldset>
+        </div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const summaryBody = document.getElementById('summary-body');
+
+        const fieldLabels = {
+            title: 'Title',
+            full_name: 'Full Name',
+            email: 'Email Address',
+            phone: 'Phone Number',
+            dob: 'Date of Birth',
+            gender: 'Gender',
+            region: 'Region',
+            category: 'Respondent Category',
+            primary_domain: 'Primary IT Domain',
+            experience: 'Years of IT Experience',
+            proficiency: 'Proficiency Level',
+            certifications: 'IT Certifications'
+        };
+
+        Object.keys(fieldLabels).forEach(key => {
+            const row = document.createElement('tr');
+            const labelCell = document.createElement('th');
+            const valueCell = document.createElement('td');
+
+            labelCell.textContent = fieldLabels[key];
+            valueCell.textContent = params.get(key) || '—';
+
+            row.appendChild(labelCell);
+            row.appendChild(valueCell);
+            summaryBody.appendChild(row);
+        });
+
+        const backUrl = `step2.html?${params.toString()}`;
+        document.getElementById('btn-back-step2').href = backUrl;
+        document.getElementById('nav-step2').href = backUrl;
+
+        document.getElementById('btn-submit-final').addEventListener('click', () => {
+            document.getElementById('submission-status').hidden = false;
+            document.getElementById('review-actions').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

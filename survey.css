@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    margin: 5px;
+    margin: 0;
     padding: 0;
 }
 
@@ -43,7 +43,7 @@ body {
 
 .banner-image {
     width: 100%;
-    height:290px;
+    height: 300px;
     object-fit: cover;
     display: block;
 }
@@ -95,6 +95,12 @@ body {
     border-bottom: 4px solid #cfd6de;
 }
 
+.step a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
 .step.active {
     background-color: #D4AF37;
     color: #002147;
@@ -106,6 +112,15 @@ body {
     max-width: 760px;
     margin: 32px auto;
     padding: 0 20px;
+}
+
+.respondent-banner {
+    background-color: #002147;
+    color: #D4AF37;
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 16px;
 }
 
 .survey-form {
@@ -177,7 +192,7 @@ body {
     align-items: center;
     gap: 6px;
     font-weight: 400;
-    color: #131212;
+    color: #222222;
     cursor: pointer;
 }
 
@@ -187,10 +202,53 @@ body {
     height: 16px;
 }
 
-/* Submit Button */
+/* Review Summary Table */
+.review-intro {
+    margin-bottom: 16px;
+    color: #002147;
+    font-weight: 600;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 10px 12px;
+    border: 1px solid #d9dee4;
+    text-align: left;
+}
+
+.summary-table th {
+    width: 40%;
+    background-color: #f4f6f9;
+    color: #002147;
+}
+
+.status-box {
+    background-color: #002147;
+    color: #D4AF37;
+    padding: 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* Buttons & Navigation Actions */
 .form-actions {
     margin-top: 24px;
     text-align: right;
+}
+
+.split-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 }
 
 .btn-next {
@@ -202,12 +260,30 @@ body {
     font-weight: 700;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-next:hover {
     background-color: #D4AF37;
     color: #002147;
     border-color: #D4AF37;
+}
+
+.btn-back {
+    background-color: #e9ecef;
+    color: #002147;
+    border: 2px solid #cfd6de;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    border-color: #002147;
 }
 
 /* Responsive Adjustments */
@@ -217,8 +293,15 @@ body {
         text-align: center;
     }
 
-    .progress-steps {
+    .progress-steps,
+    .split-actions {
         flex-direction: column;
+    }
+
+    .btn-next,
+    .btn-back {
+        width: 100%;
+        text-align: center;
     }
 
     .banner-overlay h2 {
